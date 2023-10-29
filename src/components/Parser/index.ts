@@ -14,9 +14,9 @@
 const validLogicalOperators = ["&&", ">", "<", "<=", ">=", "==", "||", "!="];
 
 export class Token {
-  private text: string;
-  private index: number;
-  private kind: "identifier" | "number" | "operator" | "variable";
+  text: string;
+  index: number;
+  kind: "identifier" | "number" | "operator" | "variable";
   constructor(text: string, index: number) {
     this.text = text;
     this.index = index;
@@ -50,18 +50,18 @@ export class Parser {
 
     const reToken = new RegExp(
       numberRegex.source +
-        "|" +
-        operatorRegex.source +
-        "|" +
-        variableRegex.source +
-        "|" +
-        identifierRegex.source +
-        "|" +
-        otherCharRegex.source,
+      "|" +
+      operatorRegex.source +
+      "|" +
+      variableRegex.source +
+      "|" +
+      identifierRegex.source +
+      "|" +
+      otherCharRegex.source,
       otherCharRegex.flags
     );
 
-    for (;;) {
+    for (; ;) {
       const match = reToken.exec(text);
       if (match === null) {
         break;

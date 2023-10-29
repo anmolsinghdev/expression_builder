@@ -15,7 +15,7 @@ const ExpressionEditor = (
 ) => {
   const [value, setValue] = useState("");
   const [logicErrorText, setLogicErrorText] = useState("");
-  const hanldeAreaInputValue = (val: any) => {
+  const handleAreaInputValue = (val: any) => {
     setValue(val);
   };
 
@@ -40,7 +40,9 @@ const ExpressionEditor = (
       console.log("expr :", expr, pretty);
 
       setLogicErrorText("");
-    } catch (exp) {
+    } catch (exp:any) {
+      
+      console.error(exp)
       const errorTokenData = exp && exp.token;
       if (errorTokenData && highlighterSubString.length > 0) {
         const firstPart = value.substring(0, errorTokenData.index);
@@ -70,7 +72,7 @@ const ExpressionEditor = (
             _newValue: string,
             newPlainTextValue: string
           ) => {
-            hanldeAreaInputValue(newPlainTextValue);
+            handleAreaInputValue(newPlainTextValue);
           }}
           style={defaultMentionStyles}
         >

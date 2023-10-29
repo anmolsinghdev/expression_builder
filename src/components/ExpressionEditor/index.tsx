@@ -14,6 +14,7 @@ const ExpressionEditor = (
   props: ExpressionEditorProps & ReturnType<typeof mapStateToProps>
 ) => {
   const [value, setValue] = useState("");
+  const [expression,setExpression] = useState('')
   const [logicErrorText, setLogicErrorText] = useState("");
   const handleAreaInputValue = (val: any) => {
     setValue(val);
@@ -38,7 +39,7 @@ const ExpressionEditor = (
       const expr = parser.Parse();
       const pretty = expr.PrettyMath();
       console.log("expr :", expr, pretty);
-
+      setExpression(pretty)
       setLogicErrorText("");
     } catch (exp:any) {
       
@@ -86,6 +87,7 @@ const ExpressionEditor = (
         </MentionsInput>
       </div>
       <div className=" h-8 mt-4 flex  text-red-700 ">{logicErrorText}</div>
+      <div>{expression}</div>
       <div className="flex-auto flex space-x-3">
         <button
           onClick={validate}

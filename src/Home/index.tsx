@@ -1,10 +1,8 @@
-import React from "react";
 import ExpressionEditor from "../components/ExpressionEditor";
 import Header from "../components/Header";
 import VariableGenerator from "../components/VariableGenerator";
 import "./style.scss";
-interface HomeProps {}
-function Home(props: HomeProps) {
+function Home() {
   return (
     <div className="wrapper-home-screen">
       <Header />

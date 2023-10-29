@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import { addToAvailableVariables } from "../../store/home/action";
 import { StoreState } from "../../store";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const VariableGenerator = (
   props: ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>

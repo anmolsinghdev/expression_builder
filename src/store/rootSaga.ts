@@ -1,4 +1,4 @@
-import { all, fork, ForkEffect, takeLatest } from "redux-saga/effects";
+import { all,  ForkEffect } from "redux-saga/effects";
 
 const task: ForkEffect<never>[] = [];
 

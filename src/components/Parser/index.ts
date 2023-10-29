@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-throw-literal */
 //  BNF grammar for the expression parser:
 //

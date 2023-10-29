@@ -21,7 +21,7 @@ const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
 const store = () => {
-  let store = createStore(reducers, applyMiddleware(logger, sagaMiddleware));
+  const store = createStore(reducers, applyMiddleware(logger, sagaMiddleware));
   sagaMiddleware.run(rootSaga);
   return { store };
 };

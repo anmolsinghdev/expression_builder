@@ -1,12 +1,15 @@
-import React, { useCallback, useMemo, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useMemo, useState } from "react";
 import { Mention, MentionsInput } from "react-mentions";
 import { defaultMentionStyles } from "./defaultMentionStyles";
 import "./style.scss";
 import { Parser } from "../Parser";
 import { connect } from "react-redux";
 import { StoreState } from "../../store";
-interface ExpressionEditorProps {}
+interface ExpressionEditorProps { }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const ExpressionEditor = (
   props: ExpressionEditorProps & ReturnType<typeof mapStateToProps>
 ) => {
@@ -34,13 +37,11 @@ const ExpressionEditor = (
     try {
       const expr = parser.Parse();
       const pretty = expr.PrettyMath();
-      console.log("expr :", expr);
+      console.log("expr :", expr, pretty);
 
       setLogicErrorText("");
     } catch (exp) {
-      console.log("exp :", exp);
-
-      const errorTokenData = exp.token;
+      const errorTokenData = exp && exp.token;
       if (errorTokenData && highlighterSubString.length > 0) {
         const firstPart = value.substring(0, errorTokenData.index);
         const lastPart = value.substring(
@@ -60,13 +61,13 @@ const ExpressionEditor = (
   return (
     <>
       <div className="wrapper-expression-input">
-      <MentionsInput
+        <MentionsInput
           className="customMentionInput"
           id="logicTextArea"
           value={value}
           onChange={(
-            event: { target: { value: string } },
-            newValue: string,
+            _event: { target: { value: string } },
+            _newValue: string,
             newPlainTextValue: string
           ) => {
             hanldeAreaInputValue(newPlainTextValue);
@@ -77,7 +78,7 @@ const ExpressionEditor = (
             trigger={/(?:^|)(\$([^\s$]*))$/} // with space = /(?:^|\s)(\$([^\s\$]*))$/
             markup={`[____display____]`}
             data={dataSetForLogic}
-            displayTransform={(id, display) => `$'${display}'`}
+            displayTransform={(_id: any, display: any) => `$'${display}'`}
             appendSpaceOnAdd={true}
           />
         </MentionsInput>
@@ -102,4 +103,5 @@ const mapStateToProps = (state: StoreState) => {
   };
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default connect(mapStateToProps)(ExpressionEditor);

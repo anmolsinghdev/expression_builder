@@ -1,0 +1,32 @@
+.wrapper-expression-input {
+  height: 55vh;
+  width: 50vw;
+  overflow: auto;
+  border: 1px solid #6d28d9;
+
+  &:focus-within {
+    border: 2px solid #6d28d9;
+  }
+
+  & textArea {
+    min-height: 55vh !important;
+    width: 100%;
+
+    border: none !important;
+    outline: none !important;
+    :focus {
+      border: none !important;
+    }
+  }
+
+  .customMentionInput__highlighter__substring {
+    visibility: visible !important;
+  }
+}
+.customMentionInput {
+  textArea {
+    &:focus {
+      outline-color: #6d28d9;
+    }
+  }
+}
